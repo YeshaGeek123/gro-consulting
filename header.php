@@ -23,6 +23,7 @@
 	<link rel="preload" href="<?php echo home_url(); ?>/wp-content/themes/gro-consulting/assets/fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="<?php echo home_url(); ?>/wp-content/themes/gro-consulting/assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="<?php echo home_url(); ?>/wp-content/themes/gro-consulting/assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="<?php echo home_url(); ?>/wp-content/themes/gro-consulting/assets/fonts/Esteban.woff2" as="font" type="font/woff2" crossorigin>
 
 	<?php wp_head(); ?>
 </head>
@@ -70,34 +71,22 @@
 			<div class="mega-menu-content">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-3">
-							<div class="mega-menu-box">
-								<img width="127" height="30" src="<?php echo home_url();?>/wp-content/uploads/2022/09/gro-hr.png" alt="Gro HR">
-								<h6><a href="#" title="HR & Recruitment">HR & Recruitment</a></h6>
-								<p>Human Resources and Recruitment services that help your people reach their full potential.</p>
+						<?php
+						if(have_rows('header_sub_menu','options')):
+							while(have_rows('header_sub_menu','options')): the_row();
+						?>
+							<div class="col-lg-3">
+								<div class="mega-menu-box">
+									<img width="127" height="30" src="<?php the_sub_field('header_sub_menu_icon','options'); ?>" alt="Gro HR">
+									<h6><a href="<?php the_sub_field('header_sub_menu_page_link','options'); ?>" title="<?php the_sub_field('header_sub_menu_title','options');?>"><?php the_sub_field('header_sub_menu_title','options'); ?></a></h6>
+									<?php the_sub_field('header_sub_menu_content','options'); ?>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="mega-menu-box">
-								<img width="146" height="30" src="<?php echo home_url();?>/wp-content/uploads/2022/09/gro-social.png" alt="Gro Social">
-								<h6><a href="#" title="Marketing & Web Design">Marketing & Web Design</a></h6>
-								<p>Strategic marketing and website design that show your potential customers why they need your business and services. From digital marketing to physical marketing, we've got you covered. </p>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="mega-menu-box">
-								<img width="127" height="30" src="<?php echo home_url();?>/wp-content/uploads/2022/09/gro-accounting.png" alt="Gro Accounting">
-								<h6><a href="#" title="Accounting & Fractional CFO">Accounting & Fractional CFO</a></h6>
-								<p>CFO, Bookkeeping, Tax and Payroll services that not only give you the clarity to make key business financial decisions, but help you strategically plan for your growth.</p>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="mega-menu-box">
-								<img width="127" height="30" src="<?php echo home_url();?>/wp-content/uploads/2022/09/gro-it.png" alt="Gro IT">
-								<h6><a href="#" title="IT/Fractional CIO">IT/Fractional CIO</a></h6>
-								<p>Managed Services and Network setups that keep your business connected and running at optimal efficiency.</p>
-							</div>
-						</div>
+						<?php
+							endwhile;
+						endif;
+						?>
+						
 					</div>
 				</div>
 			</div>

@@ -51,7 +51,7 @@ function gro_consulting_setup() {
 		array(
 			'menu-1' => esc_html__( 'Primary', 'gro-consulting' ),
 			'footer-menu' => esc_html__( 'Footer', 'gro-consulting' ),
-			'seo-menu' => esc_html__( 'SEO', 'gro-consulting' ),
+			'service-menu' => esc_html__( 'Service', 'gro-consulting' ),
 		)
 	);
 
@@ -195,6 +195,35 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+function custom_testimonials_post() {
+	$labels = array(
+		'name' => _x( 'Testimonials', 'post type general name' ),
+		'singular_name' => _x( 'Testimonial', 'post type singular name' ),
+		'add_new' => _x( 'Add New', 'testimonial' ),
+		'add_new_item' => __( 'Add New Testimonials' ),
+		'edit_item' => __( 'Edit Testimonial' ),
+		'new_item' => __( 'New Testimonial' ),
+		'all_items' => __( 'All Testimonials' ),
+		'view_item' => __( 'View Testimonial' ),
+		'search_items' => __( 'Search Testimonials' ),
+		'not_found' => __( 'No testimonial found' ),
+		'not_found_in_trash' => __( 'No testimonial found in the Trash' ),
+		'parent_item_colon' => '',
+		'menu_name' => 'Testimonials'
+	);
+	$args = array(
+		'labels' => $labels,
+		'description' => 'Holds testimonials and testimonial specific data',
+		'public' => true,
+		'menu_position' => 5,
+		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+		'has_archive' => true,
+		'menu_icon' => 'dashicons-editor-quote',
+	);
+	register_post_type( 'testimonials', $args );
+}
+add_action( 'init', 'custom_testimonials_post' );
 
 // Filter the output of logo to fix Googles Error about itemprop logo
 add_filter( 'get_custom_logo', 'change_html_custom_logo' );

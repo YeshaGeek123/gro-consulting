@@ -51,18 +51,18 @@ jQuery(document).ready(function($) {
 
 
     /* FAQ Page accordion */
-    jQuery('.accordion .faq-content').hide();
-    jQuery('.accordion > div:eq(0) h3').addClass('active-faq');
-    jQuery('.accordion > div:eq(0) .faq-content').slideDown();
+    jQuery('.services-accordian .service-accordian-content').hide();
+    jQuery('.services-accordian > div:eq(0) h3').addClass('active');
+    jQuery('.services-accordian > div:eq(0) .service-accordian-content').slideDown();
 
-    jQuery('.accordion h3').click(function(j) {
-        var dropDown = jQuery(this).closest('div').find('.faq-content');
-        jQuery(this).closest('.accordion').find('.faq-content').not(dropDown).slideUp();
-        if (jQuery(this).hasClass('active-faq')) {
-            jQuery(this).removeClass('active-faq');
+    jQuery('.services-accordian h3').click(function(j) {
+        var dropDown = jQuery(this).closest('div').find('.service-accordian-content');
+        jQuery(this).closest('.services-accordian').find('.service-accordian-content').not(dropDown).slideUp();
+        if (jQuery(this).hasClass('active')) {
+            jQuery(this).removeClass('active');
         } else {
-            jQuery(this).closest('.accordion').find('h3.active-faq').removeClass('active-faq');
-            jQuery(this).addClass('active-faq');
+            jQuery(this).closest('.services-accordian').find('h3.active').removeClass('active');
+            jQuery(this).addClass('active');
         }
         dropDown.stop(false, true).slideToggle();
         j.preventDefault();
@@ -75,10 +75,9 @@ jQuery(document).ready(function($) {
         dots: true,
         arrows: false,
         rows: 0,
-        //autoplay: true,
-       //autoplaySpeed: 2000,
-        //prevArrow: '<button class="slide-arrow prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-        //nextArrow: '<button class="slide-arrow next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+        swipeToSlide: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
         responsive: [{
             breakpoint: 992,
             settings: {
@@ -92,47 +91,19 @@ jQuery(document).ready(function($) {
         }]
     });
 
-    jQuery('.plans-slider').slick({
-        slidesToShow: 4,
+
+    jQuery('.testimonial-slider').slick({
+        slidesToShow: 2,
         slidesToScroll: 1,
         infinite: true,
         dots: true,
+        rows:0,
         arrows: true,
         autoplay: true,
+        swipeToSlide: true,
         autoplaySpeed: 2000,
-        prevArrow: '<button class="slide-arrow prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-        nextArrow: '<button class="slide-arrow next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
-        responsive: [{
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    infinite: true,
-                    dots: true,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true,
-                }
-            }
-        ]
-    });
-
-    jQuery('.review-slider').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false,
-        arrows: true,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        prevArrow: '<button class="slide-arrow prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-        nextArrow: '<button class="slide-arrow next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+        prevArrow: '<button class="slide-arrow prev-arrow"></button>',
+        nextArrow: '<button class="slide-arrow next-arrow"></button>',
         responsive: [{
             breakpoint: 992,
             settings: {
@@ -145,6 +116,7 @@ jQuery(document).ready(function($) {
             }
         }]
     });
+
     jQuery('.team-slider').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -153,6 +125,7 @@ jQuery(document).ready(function($) {
         arrows: true,
         autoplay: true,
         autoplaySpeed: 2000,
+        swipeToSlide: true,
         prevArrow: '<button class="slide-arrow prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
         nextArrow: '<button class="slide-arrow next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
         responsive: [{
